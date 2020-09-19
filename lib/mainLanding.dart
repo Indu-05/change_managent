@@ -192,6 +192,16 @@ class MyAppState extends State<MyApp1> {
     final double fillPercent = 50; // fills 56.23% for container from bottom
     final double fillStop = (100 - fillPercent) / 100;
     final List<double> stops = [0.0, fillStop, fillStop, 1.0];
+    final image = [Icons.equalizer, Icons.volume_down, Icons.settings];
+    final heading = ["Objective Title", "Objective Title", "Objective Title"];
+    final subtitle = ["Subtitle 1", "Subtitle 2", "Subtitle 3"];
+    final para = [
+      "Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dgolore…",
+      "Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dgolore…",
+      "Lorem ipsum dolor sit amet, consectetur adipis cing elit, sed do eiusmod tempor incididunt ut labore et dgolore…"
+    ];
+    final color = [Colors.deepPurple, Colors.pink, Colors.deepPurple];
+    final iconcolor = [Colors.white, Colors.white, Colors.white];
 
     return ListView(
 
@@ -269,7 +279,6 @@ class MyAppState extends State<MyApp1> {
                       ],
                     ),],),),)
             ],),
-            SizedBox(height: 0,),
             CarouselSlider(
                 items: [
                   Container(
@@ -468,95 +477,70 @@ class MyAppState extends State<MyApp1> {
                     ),
 
                   ),
-                  SizedBox(height: 10,),
-                  Container(padding: EdgeInsets.all(10),
-                      child:
-                      //Text('HI'),
-                      Column(children: <Widget>[
-                        //SizedBox(height: 20,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            InkWell(
-                                child: Text("Article Title",style: TextStyle(color: Colors.blueAccent,fontSize: 20,fontWeight: FontWeight.bold),),
-                                onTap:(){
-                                  //Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> PocPage()));
-                                }
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            Text("Subtitle",style: TextStyle(color: Colors.grey,fontSize: 14,fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        SizedBox(height: 15,),
-                        Container(
-                          margin: EdgeInsets.only(left:22,right: 20 ),
-                          child: Text(
-                            'Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                            ,style: TextStyle(fontSize: 14), ),
-                        ),
-                        SizedBox(height: 15,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            InkWell(
-                                child: Text("Article Title",style: TextStyle(color: Colors.blueAccent,fontSize: 20,fontWeight: FontWeight.bold),),
-                                onTap:(){
-                                  //Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> PocPage()));
-                                }
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            Text("Subtitle",style: TextStyle(color: Colors.grey,fontSize: 14,fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        SizedBox(height: 15,),
-                        Container(
-                          margin: EdgeInsets.only(left:22,right: 20 ),
-                          child: Text(
-                            'Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                            ,style: TextStyle(fontSize: 14), ),
-                        ),
-                        SizedBox(height: 15,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            InkWell(
-                                child: Text("Article Title",style: TextStyle(color: Colors.blueAccent,fontSize: 20,fontWeight: FontWeight.bold),),
-                                onTap:(){
-                                  //Navigator.of(context).push(new MaterialPageRoute(builder: (context)=> PocPage()));
-                                }
-                            ),
-                          ],
-                        ),
-                        SizedBox(height: 5,),
-                        Row(
-                          children: [
-                            SizedBox(width: 20,),
-                            Text("Subtitle",style: TextStyle(color: Colors.grey,fontSize: 14,fontWeight: FontWeight.bold)),
-                          ],
-                        ),
-                        SizedBox(height: 15,),
-                        Container(
-                          margin: EdgeInsets.only(left:22,right: 20 ),
-                          child: Text(
-                            'Lorem ipsum dolor sit amet,consectetur adipiscing elit,sed do eiusmod tempor incididunt ut labore et dolore magna aliqua.'
-                            ,style: TextStyle(fontSize: 14), ),
-                        ),
-                      ],)
-                  ),
+                 // SizedBox(height: 10,),
+
                 ],
               ),
 
             ),
+            SingleChildScrollView(
+              child: Container(
+                height: 300,
+                //margin: EdgeInsets.fromLTRB(5, 20, 5, 0),
+                //width: MediaQuery.of(context).size.width,
+                child: ListView.separated(
+                    itemBuilder: (BuildContext context, int index) {
+                      return Container(
+                        padding: EdgeInsets.all(15),
+                        child: ListTile(
+                          /*leading: Container(
+                            decoration: new BoxDecoration(
+                                color: color[index],
+
+                                borderRadius: new BorderRadius.only(
+                                  topLeft: const Radius.circular(30.0),
+                                  topRight: const Radius.circular(30.0),
+                                  bottomLeft: const Radius.circular(30.0),
+                                  bottomRight: const Radius.circular(30.0),
+                                )
+                            ),
+                            child: IconButton(icon: Icon(image[index]),
+                              iconSize: 30,
+                              color: iconcolor[index],
+                              onPressed: () {},),
+                          ),*/
+                          title: Container(
+                            child: InkWell(
+                              child: Text("Article Title", style: TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.bold),),
+                              onTap:(){
+                        }
+                            ),
+                          ),
+                          dense: true,
+                          isThreeLine: true,
+                          subtitle: Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
+                            children: [
+                              SizedBox(height: 5,),
+                              Text('${subtitle[index]}', style: TextStyle(fontSize: 14,
+                                  fontWeight: FontWeight.bold,
+                                  color: Colors.black),),
+                              SizedBox(height: 15,),
+                              Text('${para[index]}', style: TextStyle(
+                                  height: 1.5, color: Colors.black54, fontSize: 14),),
+                            ],
+                          ),
+                        ),);
+                    },
+                    separatorBuilder: (BuildContext context, int index) =>
+                        Divider(
+                          height: 13, color: Colors.black,),
+                    itemCount: 3),
+              ),
+            )
           ],
           ),
         ]);
